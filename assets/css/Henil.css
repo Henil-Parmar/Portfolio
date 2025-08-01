@@ -1,0 +1,83 @@
+ /* Container that holds the images and text */
+        .image-container {
+            display: flex; /* Display images in a row */
+            justify-content: space-between; /* Distribute images with space between */
+            gap: 10px; /* Space between images */
+            padding: 10px;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        }
+
+        /* Each image-wrapper container */
+        .image-wrapper {
+            text-align: center; /* Center the text under the image */
+            flex: 1 1 22%; /* Flex allows images to adjust in size based on the available space */
+            max-width: 22%; /* Ensure no item grows beyond 22% width */
+            position: relative; /* For positioning shadow and search icon */
+        }
+
+        /* Each image in the container */
+        .image-wrapper img {
+            width: 100%; /* Make the image responsive */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px; /* Optional: rounded corners for the images */
+            object-fit: cover; /* Ensures the image fills the space without distortion */
+            transition: filter 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for filter and shadow */
+        }
+
+        /* Text below the image */
+        .image-wrapper p {
+            margin-top: 10px; /* Space between image and text */
+            font-size: 14px; /* Adjust text size */
+            color: #333; /* Text color */
+        }
+
+        /* Hover effect on the image */
+        .image-wrapper img:hover {
+        transform: scale(1.05);
+            filter: brightness(0.5); /* Darken the image */
+            /*box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Add shadow to highlight */
+        }
+
+        /* Search icon appearing on hover */
+        .image-wrapper:hover .search-icon {
+            opacity: 1; /* Show the search icon */
+            transform: scale(1); /* Show at normal size */
+        }
+
+        /* Hidden search icon initially */
+        .search-icon {
+            position: absolute; /* Position it over the image */
+            top: 50%; /* Center it vertically */
+            left: 50%; /* Center it horizontally */
+            transform: translate(-50%, -50%) scale(0); /* Initially hidden and scaled down */
+            opacity: 0; /* Make the icon invisible initially */
+            font-size: 30px; /* Set size for the search icon */
+            color: white; /* Make the icon color white */
+            transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+        }
+
+        /* Ensure images fit without overflowing on small screens */
+        @media (max-width: 800px) {
+            .image-wrapper {
+                flex: 1 1 45%; /* On medium screens, images take up 45% of the width */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .image-wrapper {
+                flex: 1 1 100%; /* On small screens, make images take up the full width */
+            }
+        }
+
+         /* Hide text on screens smaller than 500px */
+        @media (max-width: 550px) {
+            .image-wrapper p {
+                display: none; /* Hide text when screen width is below 500px */
+            }
+        }
+
+        .bullets-inside {
+        text-align: left;
+         list-style-position: inside;
+        }
